@@ -1,3 +1,35 @@
+## Internet Gateway and Routing
+
+An Internet Gateway named `project2-igw` is attached to the custom VPC.
+
+### Public Route Table
+
+Name: `project2-public-rt`
+
+| Destination | Target |
+|---|---|
+| 10.0.0.0/16 | Local |
+| 0.0.0.0/0 | Internet Gateway |
+
+Associated subnet: `project2-public-subnet`
+
+### Private Route Table
+
+Name: `project2-private-rt`
+
+| Destination | Target |
+|---|---|
+| 10.0.0.0/16 | Local |
+
+Associated subnet: `project2-private-subnet`
+
+### Security Considerations
+
+The public subnet has a route to the Internet Gateway, while the private subnet has no direct internet route.
+
+Traffic between resources is additionally controlled through security groups and other network security mechanisms.
+
+The next stage will configure security groups for public and private EC2 workloads.
 ## VPC Subnet Configuration
 
 The project uses a custom Amazon VPC in the Europe (London) Region with the CIDR block `10.0.0.0/16`.
