@@ -99,3 +99,34 @@ AWS VPC, EC2, AWS CloudShell, Linux, Git and GitHub.
 ## Project Status
 In progress.
 
+
+## Implementation and Testing
+
+### Public Subnet
+- Created a public subnet (10.0.1.0/24).
+- Attached an Internet Gateway to the VPC.
+- Configured a default route (0.0.0.0/0) to the Internet Gateway.
+- Associated the public subnet with the public route table.
+
+### Private Subnet
+- Created a private subnet (10.0.2.0/24).
+- Associated it with a separate private route table.
+- Kept the private subnet without a direct Internet Gateway route.
+
+### EC2 Web Server
+- Launched an Amazon Linux 2023 EC2 instance in the public subnet.
+- Configured the security group to allow HTTP traffic on port 80.
+- Connected securely using AWS Systems Manager Session Manager.
+- Enabled and started the Apache HTTP Server.
+- Verified that the web server was running.
+- Successfully accessed the web page using the EC2 public IPv4 address.
+
+## Validation
+
+The public EC2 web server displayed "It works!" in the browser, confirming successful HTTP connectivity through the Internet Gateway.
+
+
+## Architecture Diagram
+
+[View the AWS VPC Architecture Diagram](diagrams/vpc-architecture.md)
+

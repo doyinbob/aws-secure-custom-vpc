@@ -1,0 +1,18 @@
+flowchart TB
+    Internet((Internet))
+    IGW[Internet Gateway]
+
+    subgraph VPC["VPC - 10.0.0.0/16"]
+        subgraph Public["Public Subnet - 10.0.1.0/24"]
+            EC2[EC2 Apache Web Server]
+            PRT[Public Route Table]
+        end
+
+        subgraph Private["Private Subnet - 10.0.2.0/24"]
+            VRT[Private Route Table]
+        end
+    end
+
+    Internet <--> IGW
+    IGW <--> PRT
+    PRT <--> EC2
