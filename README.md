@@ -1,3 +1,30 @@
+## Security Group Configuration
+
+Two security groups were created to control traffic between public and private workloads.
+
+### Public Security Group
+
+Name: `project2-public-sg`
+
+Inbound rules:
+- HTTP (TCP 80) from `0.0.0.0/0`
+- No inbound SSH access from the public internet
+
+### Private Security Group
+
+Name: `project2-private-sg`
+
+Inbound rules:
+- HTTP (TCP 80) from `project2-public-sg` only
+
+### Security Design
+
+The public security group permits web traffic from the internet, while the private security group restricts HTTP access to resources associated with the public security group.
+
+Security groups are stateful and provide network-interface-level traffic filtering.
+
+This configuration demonstrates how AWS security group references can be used to control communication between application tiers.
+
 ## Internet Gateway and Routing
 
 An Internet Gateway named `project2-igw` is attached to the custom VPC.
